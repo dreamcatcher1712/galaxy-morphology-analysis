@@ -1,0 +1,4 @@
+metric,model_name,value
+Highest Accuracy,SVM,0.98
+Highest F1 (Macro),SVM,0.9485
+Highest AUROC,SVM,0.9997

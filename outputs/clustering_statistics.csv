@@ -1,0 +1,4 @@
+cluster,galaxy_count,avg_smooth,avg_disk,avg_spiral
+0,95237,0.835,0.12,0.148
+1,51076,0.303,0.667,0.707
+2,26064,0.624,0.35,0.251
