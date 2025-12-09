@@ -62,11 +62,11 @@ This will download the Galaxy Zoo 2 dataset from Hugging Face (~2GB).
 galaxy-morphology-analysis/
 │
 ├── requirements.txt                   # Python dependencies
-├── 1_eda.py                           # Exploratory Data Analysis
-├── 2_ml_models.py                     # Classical ML training
-├── 3_cnn.py                           # CNN training
-├── 4_unsupervised.py                  # Clustering & anomaly detection
-├── 5_sql.py                           # SQL database integration
+├── eda.py                           # Exploratory Data Analysis
+├── ml_models.py                     # Classical ML training
+├── cnn.py                           # CNN training
+├── unsupervised.py                  # Clustering & anomaly detection
+├── sql.py                           # SQL database integration
 ├── app.py                             # Streamlit dashboard
 ├── image_loader.py                     # Helper functions
 ├── sql_utils.py                        # Database utilities
@@ -79,7 +79,6 @@ galaxy-morphology-analysis/
 │   ├── unsupervised/                   # Clustering & anomaly results
 │   └── sql/                            # SQL database & queries
 │
-├── gz2_prepared/                       # Dataset (after download)
 ├── report/                             # IEEE conference paper
 │   └── conference_paper.pdf
 ```
