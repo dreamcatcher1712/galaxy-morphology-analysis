@@ -1,0 +1,10 @@
+kmeans_k3_cluster,galaxy_type_name,count,pct_in_cluster
+0,Smooth,91125,95.68
+0,Spiral,4102,4.31
+0,Disk,10,0.01
+1,Spiral,34976,68.48
+1,Smooth,10990,21.52
+1,Disk,5110,10.0
+2,Smooth,19693,75.56
+2,Disk,3190,12.24
+2,Spiral,3181,12.2
