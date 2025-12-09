@@ -1,5 +1,0 @@
-model_name,accuracy,f1_score,auroc
-SVM,0.98,0.9485,0.9997
-Logistic Regression,0.9725,0.9252,0.998
-Shallow CNN,0.7946,0.6566,0.9065
-Random Forest,0.8684,0.5784,0.6636
