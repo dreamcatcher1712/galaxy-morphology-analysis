@@ -1,0 +1,9 @@
+              precision    recall  f1-score   support
+
+      Smooth     0.9991    0.9768    0.9878     24362
+        Disk     0.7888    0.9886    0.8774      1662
+      Spiral     0.9733    0.9875    0.9803      8452
+
+    accuracy                         0.9800     34476
+   macro avg     0.9204    0.9843    0.9485     34476
+weighted avg     0.9826    0.9800    0.9806     34476
