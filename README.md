@@ -1,109 +1,125 @@
-Galaxy Morphology Analysis with Machine Learning
+# Galaxy Morphology Analysis with Machine Learning
 
 Automated galaxy morphology classification and anomaly detection using classical ML, CNNs, and unsupervised learning on the Galaxy Zoo 2 dataset.
 
-Project Overview
+## Project Overview
+
 This project implements a comprehensive machine learning pipeline to:
 
-Classify 138,693 galaxies into 3 morphological types (Smooth, Disk, Spiral)
-Detect 445 rare/anomalous galaxies using consensus anomaly detection
-Compare classical ML models vs. shallow CNN performance
-Explore results through an interactive Streamlit dashboard
+* Classify 138,693 galaxies into 3 morphological types (Smooth, Disk, Spiral)
+* Detect 445 rare/anomalous galaxies using consensus anomaly detection
+* Compare classical ML models vs. shallow CNN performance
+* Explore results through an interactive Streamlit dashboard
 
-Best Results: SVM achieved 94.85% F1-score with 99.97% AUROC
-Key Features
+**Best Results:** SVM achieved 94.85% F1-score with 99.97% AUROC
 
-- Classical ML Models: Logistic Regression, Random Forest, SVM with class imbalance handling
-- Shallow CNN: 4-layer convolutional network with data augmentation
-- Unsupervised Learning: K-Means, DBSCAN clustering + 3 anomaly detection methods
-- SQL Integration: Queryable SQLite database with 138k+ galaxies
-- Interactive Dashboard: Streamlit app for result exploration
-- Reproducible: Complete pipeline with documented code
+## Key Features
 
-Consensus Anomalies: 445 galaxies (0.32%) flagged by all 3 methods
-Methods: Isolation Forest, Local Outlier Factor, PCA Reconstruction Error
+* **Classical ML Models:** Logistic Regression, Random Forest, SVM with class imbalance handling
+* **Shallow CNN:** 4-layer convolutional network with data augmentation
+* **Unsupervised Learning:** K-Means, DBSCAN clustering + 3 anomaly detection methods
+* **SQL Integration:** Queryable SQLite database with 138k+ galaxies
+* **Interactive Dashboard:** Streamlit app for result exploration
+* **Reproducible:** Complete pipeline with documented code
 
-Quick Start
-Prerequisites
-bashPython 3.8+
-8GB RAM minimum
-GPU optional (for CNN training)
-Installation
+**Consensus Anomalies:** 445 galaxies (0.32%) flagged by all 3 methods
+**Methods:** Isolation Forest, Local Outlier Factor, PCA Reconstruction Error
 
-Clone the repository
+## Quick Start
 
-bashgit clone https://github.com/yourusername/galaxy-morphology-analysis.git
+### Prerequisites
+
+* Python 3.8+
+* 8GB RAM minimum
+* GPU optional (for CNN training)
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/galaxy-morphology-analysis.git
 cd galaxy-morphology-analysis
+```
 
-Install dependencies
+Install dependencies:
 
-bashpip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
-Download the dataset
+Download the dataset:
 
-bashpython download_data.py
+```bash
+python download_data.py
+```
+
 This will download the Galaxy Zoo 2 dataset from Hugging Face (~2GB).
-📁 Project Structure
+
+## Project Structure
+
+```
 galaxy-morphology-analysis/
 │
 ├── requirements.txt                   # Python dependencies
+├── 1_eda.py                           # Exploratory Data Analysis
+├── 2_ml_models.py                     # Classical ML training
+├── 3_cnn.py                           # CNN training
+├── 4_unsupervised.py                  # Clustering & anomaly detection
+├── 5_sql.py                           # SQL database integration
+├── app.py                             # Streamlit dashboard
+├── image_loader.py                     # Helper functions
+├── sql_utils.py                        # Database utilities
 │
-├── 1_eda.py                          # Exploratory Data Analysis
-├── 2_ml_models.py                    # Classical ML training
-├── 3_cnn.py                          # CNN training
-├── 4_unsupervised.py                 # Clustering & anomaly detection
-├── 5_sql.py                          # SQL database integration
+├── outputs/                            # Generated results
+│   ├── eda/                            # EDA visualizations
+│   ├── models/                         # Trained model files (.pkl)
+│   ├── results/                        # Performance metrics & plots
+│   ├── cnn/                            # CNN results & weights
+│   ├── unsupervised/                   # Clustering & anomaly results
+│   └── sql/                            # SQL database & queries
 │
-├── app.py                            # Streamlit dashboard
-├── image_loader.py                   # Helper functions
-├── sql_utils.py                      # Database utilities
-│
-├── outputs/                          # Generated results
-│   ├── eda/                          # EDA visualizations
-│   ├── models/                       # Trained model files (.pkl)
-│   ├── results/                      # Performance metrics & plots
-│   ├── cnn/                          # CNN results & weights
-│   ├── unsupervised/                 # Clustering & anomaly results
-│   └── sql/                          # SQL database & queries
-│
-├── gz2_prepared/                     # Dataset (after download)
-│
-├── report/                           # IEEE conference paper
-│   ├── conference_paper.pdf
-│
-│
+├── gz2_prepared/                       # Dataset (after download)
+├── report/                             # IEEE conference paper
+│   └── conference_paper.pdf
+```
 
-Key Findings
-1. Classical ML vs CNN
+## Key Findings
 
-SVM outperformed shallow CNN by 28.19 percentage points (F1-score)
-Classical models more effective with engineered features vs. raw images
-CNNs require deeper architectures for competitive performance
+### 1. Classical ML vs CNN
 
-2. Class Imbalance Handling
+* SVM outperformed shallow CNN by 28.19 percentage points (F1-score)
+* Classical models more effective with engineered features vs. raw images
+* CNNs require deeper architectures for competitive performance
 
-Random undersampling + balanced class weights most effective
-Reduced majority class from 97k → 70k samples
-Improved minority class (Disk) detection significantly
+### 2. Class Imbalance Handling
 
-3. Feature Importance
+* Random undersampling + balanced class weights most effective
+* Reduced majority class from 97k → 70k samples
+* Improved minority class (Disk) detection significantly
+
+### 3. Feature Importance
+
 Top 5 discriminative features:
 
-spiral_fraction (20.2%)
-has_spiral_arms_yes_fraction (16.8%)
-smooth_or_featured_disk_fraction (12.5%)
-disk_fraction (11.7%)
-has_spiral_arms_no_fraction (10.1%)
+* spiral_fraction (20.2%)
+* has_spiral_arms_yes_fraction (16.8%)
+* smooth_or_featured_disk_fraction (12.5%)
+* disk_fraction (11.7%)
+* has_spiral_arms_no_fraction (10.1%)
 
-4. Anomaly Detection
+### 4. Anomaly Detection
 
-445 consensus anomalies represent truly unusual objects
-12-18% overlap with human-labeled "odd" galaxies
-Methods capture different aspects of anomalousness
+* 445 consensus anomalies represent truly unusual objects
+* 12-18% overlap with human-labeled "odd" galaxies
+* Methods capture different aspects of anomalousness
 
-SQL Database Schema
+## SQL Database Schema
+
 The SQLite database contains 5 normalized tables:
-sql-- Galaxy metadata
+
+```sql
+-- Galaxy metadata
 CREATE TABLE galaxies (
     galaxy_id INTEGER PRIMARY KEY,
     smooth_fraction REAL,
@@ -146,41 +162,48 @@ CREATE TABLE model_performance (
     f1_macro REAL,
     auroc REAL
 );
-Example Queries
-Find top 10 anomalous spiral galaxies:
-sqlSELECT g.galaxy_id, g.spiral_fraction, a.pca_reconstruction_error
+```
+
+### Example Queries
+
+```sql
+-- Find top 10 anomalous spiral galaxies
+SELECT g.galaxy_id, g.spiral_fraction, a.pca_reconstruction_error
 FROM galaxies g
 JOIN anomaly_scores a ON g.galaxy_id = a.galaxy_id
 WHERE g.galaxy_type_name = 'Spiral' AND a.consensus_anomaly = 1
 ORDER BY a.pca_reconstruction_error DESC
 LIMIT 10;
+```
 
-Technologies Used
+## Technologies Used
 
-Data Processing: Pandas, NumPy, HuggingFace Datasets
-Machine Learning: Scikit-learn, Imbalanced-learn
-Deep Learning: PyTorch, Torchvision
-Visualization: Matplotlib, Seaborn, Plotly
-Database: SQLite3
-Dashboard: Streamlit
-Dimensionality Reduction: PCA, t-SNE
+* **Data Processing:** Pandas, NumPy, HuggingFace Datasets
+* **Machine Learning:** Scikit-learn, Imbalanced-learn
+* **Deep Learning:** PyTorch, Torchvision
+* **Visualization:** Matplotlib, Seaborn, Plotly
+* **Database:** SQLite3
+* **Dashboard:** Streamlit
+* **Dimensionality Reduction:** PCA, t-SNE
 
-Dataset
-Source: Galaxy Zoo 2 Dataset (Hugging Face)
-Statistics:
+## Dataset
 
-Size: 138,693 galaxies
-Image Format: 128×128 RGB
-Features: 76 columns (38 fraction features, 38 binary labels)
-Classes: Smooth (70.1%), Disk (4.8%), Spiral (24.6%)
+* **Source:** Galaxy Zoo 2 Dataset (Hugging Face)
+* **Size:** 138,693 galaxies
+* **Image Format:** 128×128 RGB
+* **Features:** 76 columns (38 fraction features, 38 binary labels)
+* **Classes:** Smooth (70.1%), Disk (4.8%), Spiral (24.6%)
 
-License
+## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
-Author
+
+## Author
+
 Ayushi Gupta
 
-Acknowledgments
+## Acknowledgments
 
-Galaxy Zoo Team - For crowdsourced labels and dataset
-Hugging Face - For dataset hosting and tools
-SDSS Collaboration - For galaxy imaging data
+* Galaxy Zoo Team – For crowdsourced labels and dataset
+* Hugging Face – For dataset hosting and tools
+* SDSS Collaboration – For galaxy imaging data
