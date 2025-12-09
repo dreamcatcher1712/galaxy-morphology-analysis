@@ -2,7 +2,7 @@ Galaxy Morphology Analysis with Machine Learning
 
 Automated galaxy morphology classification and anomaly detection using classical ML, CNNs, and unsupervised learning on the Galaxy Zoo 2 dataset.
 
-📋 Project Overview
+Project Overview
 This project implements a comprehensive machine learning pipeline to:
 
 Classify 138,693 galaxies into 3 morphological types (Smooth, Disk, Spiral)
